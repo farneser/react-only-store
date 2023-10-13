@@ -15,8 +15,8 @@ const Header: React.FC = () => {
 
     return (
         <div id="header">
-            <HeaderButton button_text={"cart"} path={"cart"}/>
-            <HeaderButton button_text={"home"} path={"/"}/>
+            <HeaderButton button_text={"Home"} path={"/"}/>
+            <HeaderButton button_text={"Cart"} path={"cart"}/>
             <div>
                 <span>{sum}</span>
             </div>
