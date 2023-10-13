@@ -1,0 +1,9 @@
+.header__link {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &_active {
+    color: #ff0000
+  }
+}
