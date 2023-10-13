@@ -2,24 +2,24 @@ import React, {useState} from 'react';
 import {CartProduct} from "../../../../interfaces/CartProps";
 
 interface CartItemProps {
-    cart: CartProduct;
+    cartProduct: CartProduct;
     increment: (product: CartProduct) => void;
     decrement: (product: CartProduct) => void;
     removeFromCart: (product: CartProduct) => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({cart, increment, decrement, removeFromCart}) => {
+const CartItem: React.FC<CartItemProps> = ({cartProduct, increment, decrement, removeFromCart}) => {
 
-    const [count, setCount] = useState<number>(cart.count)
+    const [count, setCount] = useState<number>(cartProduct.count)
 
     const handleIncrement = () => {
-        increment(cart);
+        increment(cartProduct);
         setCount(count + 1)
     };
 
     const handleDecrement = () => {
         if (count > 1) {
-            decrement(cart);
+            decrement(cartProduct);
             setCount(count - 1)
         } else {
             handleRemoveFromCart()
@@ -27,13 +27,13 @@ const CartItem: React.FC<CartItemProps> = ({cart, increment, decrement, removeFr
     };
 
     const handleRemoveFromCart = () => {
-        removeFromCart(cart);
+        removeFromCart(cartProduct);
         setCount(0)
     };
 
     return (
         count !== 0 ? <li>
-            <span>{cart.product.name} - ${cart.product.price} </span>
+            <span>{cartProduct.product.name} - ${cartProduct.product.price} </span>
             <button onClick={handleIncrement}>+</button>
             <span>{count}</span>
             <button onClick={handleDecrement}>-</button>

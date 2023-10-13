@@ -1,51 +1,54 @@
-import React, {useState, useEffect} from 'react';
-import {CartProduct, CartProps} from "../../../interfaces/CartProps";
-import {getCartItems, updateCart} from "../../../services/cartService";
+import React, {useContext, useEffect, useState} from 'react';
 import CartItem from "./item/CartItem";
+import {removeFromCart} from "../../../services/cartService";
+import {CartProduct} from "../../../interfaces/CartProps";
+import {CartContext} from "../../providers/CartProvider";
 
-const Cart: React.FC<CartProps> = ({cart, removeFromCart}) => {
-    const [cartItems, setCartItems] = useState(cart);
+const Cart: React.FC = () => {
+    const context = useContext(CartContext);
 
-    const updateCartItems = (items: CartProduct[]) => {
-        setCartItems(items)
-        updateCart(items)
-    }
-
-    useEffect(() => {
-        updateCartItems(getCartItems());
-    }, []);
+    const [cartItems, setCartItems] = useState(context ? context.cart : []);
 
     const increment = (item: CartProduct) => {
-        const itemIndex = cartItems.findIndex((cartItem) => cartItem.product.id === item.product.id);
+        const updatedCart = cartItems.map((cartItem) =>
+            cartItem.product.id === item.product.id
+                ? {...cartItem, count: cartItem.count + 1}
+                : cartItem
+        );
 
-        if (itemIndex !== -1) {
-            const updatedCart = [...cartItems];
-
-            updatedCart[itemIndex].count++;
-            updateCartItems(updatedCart);
+        if (context) {
+            setCartItems(updatedCart);
+            context.updateCart(updatedCart);
         }
     };
 
     const decrement = (item: CartProduct) => {
-        const itemIndex = cartItems.findIndex((cartItem) => cartItem.product.id === item.product.id);
+        const updatedCart = cartItems.map((cartItem) =>
+            cartItem.product.id === item.product.id
+                ? {...cartItem, count: cartItem.count - 1}
+                : cartItem
+        );
 
-        if (itemIndex !== -1) {
-            const updatedCart = [...cartItems];
 
-            updatedCart[itemIndex].count--;
-
-            updateCartItems(updatedCart);
+        if (context) {
+            setCartItems(updatedCart);
+            context.updateCart(updatedCart);
         }
     };
+
+    useEffect(() => {
+        setCartItems(cartItems);
+        context?.updateCart(cartItems)
+    }, [cartItems]);
 
     return (
         <div>
             <h2>Cart</h2>
             <ul>
-                {cartItems.map((item) => (
+                {cartItems.map(item => (
                     <CartItem
                         key={item.id}
-                        cart={item}
+                        cartProduct={item}
                         increment={() => increment(item)}
                         decrement={() => decrement(item)}
                         removeFromCart={() => removeFromCart(item.product)}
