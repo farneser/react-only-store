@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Product} from "../interfaces/Product";
-import {getCartItems} from "../services/cartService";
 import ProductItem from "./ProductItem";
 
 interface ProductListProps {
@@ -14,7 +13,7 @@ const ProductList: React.FC<ProductListProps> = ({products, addToCart}) => {
             <h2>Products</h2>
             <ul>
                 {products.map((product) => (
-                    <ProductItem product={product}/>
+                    <ProductItem product={product} key={product.id}/>
                 ))}
             </ul>
         </div>

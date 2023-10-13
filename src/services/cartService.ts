@@ -1,9 +1,9 @@
 import {Product} from "../interfaces/Product";
-import {CartItem} from "../interfaces/CartProps";
+import {CartProduct} from "../interfaces/CartProps";
 
 const CART_KEY = 'cart';
 
-export function getCartItems(): CartItem[] {
+export function getCartItems(): CartProduct[] {
     const savedCart = localStorage.getItem(CART_KEY);
     return savedCart ? JSON.parse(savedCart) : [];
 }
@@ -11,9 +11,13 @@ export function getCartItems(): CartItem[] {
 export function addToCart(item: Product): void {
     const cartItems = getCartItems();
 
+    if (cartItems.some(c => c.product.id === item.id)) {
+        return
+    }
+
     let id = 1;
 
-    if (cartItems.length != 0) {
+    if (cartItems.length !== 0) {
         id = cartItems[cartItems.length - 1].id + 1
     }
 
@@ -24,6 +28,10 @@ export function addToCart(item: Product): void {
 
 export function removeFromCart(item: Product): void {
     const cartItems = getCartItems();
-    const updatedCart = cartItems.filter((cartItem) => cartItem.id !== item.id);
+    const updatedCart = cartItems.filter((cartItem) => cartItem.product.id !== item.id);
     localStorage.setItem(CART_KEY, JSON.stringify(updatedCart));
+}
+
+export function updateCart(items: CartProduct[]): void {
+    localStorage.setItem(CART_KEY, JSON.stringify(items));
 }
