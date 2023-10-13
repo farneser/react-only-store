@@ -12,7 +12,7 @@ export function addToCart(item: Product): CartProduct {
     const cartItems = getCartItems();
 
     if (cartItems.some(c => c.product.id === item.id)) {
-        const cartItem = cartItems.find(c => c.product.id == item.id)
+        const cartItem = cartItems.find(c => c.product.id === item.id)
 
         if (cartItem !== undefined) {
             return cartItem;

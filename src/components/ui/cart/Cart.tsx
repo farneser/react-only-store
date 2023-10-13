@@ -1,8 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import CartItem from "./item/CartItem";
-import {removeFromCart} from "../../../services/cartService";
-import {CartProduct} from "../../../interfaces/CartProps";
-import {CartContext} from "../../providers/CartProvider";
+import CartItem from './item/CartItem';
+import {removeFromCart} from '../../../services/cartService';
+import {CartProduct} from '../../../interfaces/CartProps';
+import {CartContext} from '../../providers/CartProvider';
+
+import './cart.scss';
 
 const Cart: React.FC = () => {
     const context = useContext(CartContext);
@@ -29,7 +31,6 @@ const Cart: React.FC = () => {
                 : cartItem
         );
 
-
         if (context) {
             setCartItems(updatedCart);
             context.updateCart(updatedCart);
@@ -38,23 +39,22 @@ const Cart: React.FC = () => {
 
     useEffect(() => {
         setCartItems(cartItems);
-        context?.updateCart(cartItems)
+        context?.updateCart(cartItems);
     }, [cartItems]);
 
     return (
-        <div>
-            <h2>Cart</h2>
-            <ul>
-                {cartItems.map(item => (
+        <div className={'cart-container'}>
+            <h2 className={'cart-title'}>Cart</h2>
+            <div className={'cart-item-list'}>
+                {cartItems.map((item) => (
                     <CartItem
-                        key={item.id}
                         cartProduct={item}
                         increment={() => increment(item)}
                         decrement={() => decrement(item)}
                         removeFromCart={() => removeFromCart(item.product)}
                     />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

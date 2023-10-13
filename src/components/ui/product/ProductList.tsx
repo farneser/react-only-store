@@ -13,11 +13,11 @@ const ProductList: React.FC<ProductListProps> = ({products, addToCart}) => {
     return (
         <div className="product-list">
             <h2 className="product-list-title">Products</h2>
-            <ul className="product-list-item-list">
+            <div className="product-list-item-list">
                 {products.map((product) => (
                     <ProductItem product={product}/>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
