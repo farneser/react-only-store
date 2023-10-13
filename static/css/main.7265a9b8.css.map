@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.7265a9b8.css","mappings":"AACE,oBACE,eAGF,qBACE","sources":["components/ui/layout/header/button/headerButton.scss"],"sourcesContent":[".header__link {\n  &:hover {\n    cursor: pointer;\n  }\n\n  &_active {\n    color: #ff0000\n  }\n}"],"names":[],"sourceRoot":""}
