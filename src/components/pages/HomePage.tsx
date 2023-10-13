@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductList from "../components/ProductList";
-import {Product} from "../interfaces/Product";
-import {addToCart} from "../services/cartService";
+import ProductList from "../ui/product/ProductList";
+import {Product} from "../../interfaces/Product";
+import {addToCart} from "../../services/cartService";
 
 const HomePage: React.FC = () => {
 

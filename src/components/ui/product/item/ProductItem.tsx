@@ -1,6 +1,6 @@
 import React, {useState, useEffect, FC} from 'react';
-import {Product} from "../interfaces/Product";
-import {addToCart, getCartItems} from "../services/cartService";
+import {Product} from "../../../../interfaces/Product";
+import {addToCart, getCartItems} from "../../../../services/cartService";
 
 const ProductItem: FC<{ product: Product }> = ({product}) => {
 
