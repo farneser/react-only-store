@@ -8,11 +8,15 @@ export function getCartItems(): CartProduct[] {
     return savedCart ? JSON.parse(savedCart) : [];
 }
 
-export function addToCart(item: Product): void {
+export function addToCart(item: Product): CartProduct {
     const cartItems = getCartItems();
 
     if (cartItems.some(c => c.product.id === item.id)) {
-        return
+        const cartItem = cartItems.find(c => c.product.id == item.id)
+
+        if (cartItem !== undefined) {
+            return cartItem;
+        }
     }
 
     let id = 1;
@@ -21,9 +25,12 @@ export function addToCart(item: Product): void {
         id = cartItems[cartItems.length - 1].id + 1
     }
 
-    cartItems.push({id: id, product: item, count: 1});
+    const cartItem = {id: id, product: item, count: 1}
+
+    cartItems.push(cartItem);
 
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    return cartItem;
 }
 
 export function removeFromCart(item: Product): void {
