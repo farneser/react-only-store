@@ -1,0 +1,73 @@
+/* CartItemStyles.module.scss */
+
+/* Style for the cart item container */
+.cart-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Style for the product details */
+.product-details {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the product name and price */
+.product-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.product-price {
+  color: #777;
+}
+
+/* Style for the quantity controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the buttons */
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.increment-button {
+  background-color: #007bff;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.increment-button:hover {
+  background-color: #0056b3;
+}
+
+.decrement-button {
+  background-color: #dc3545;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.decrement-button:hover {
+  background-color: #bd2130;
+}
+
+.remove-button {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.remove-button:hover {
+  background-color: #e0a800;
+}
