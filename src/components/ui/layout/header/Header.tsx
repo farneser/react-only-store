@@ -5,12 +5,20 @@ import HeaderButton from "./button/HeaderButton";
 const Header: React.FC = () => {
     const context = useContext(CartContext);
 
+    let sum = 0;
+
+    if (context) {
+        context.cart.map(c => {
+            sum += c.count * c.product.price;
+        })
+    }
+
     return (
         <div id="header">
             <HeaderButton button_text={"cart"} path={"cart"}/>
             <HeaderButton button_text={"home"} path={"/"}/>
             <div>
-                <span>{context ? context.cart.length : 0}</span>
+                <span>{sum}</span>
             </div>
         </div>
     );
