@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import "./step.scss"
+import {OrderContext} from "../../providers/OrderProvider";
 
 interface CardDataStepProps {
     onPrevious: () => void;
     onNext: () => void;
 }
 
-const CardDataStep: React.FC<CardDataStepProps> = ({ onPrevious, onNext }) => {
+const CardDataStep: React.FC<CardDataStepProps> = ({onPrevious, onNext}) => {
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
+    const context = useContext(OrderContext)
 
     const handlePrevious = () => {
         onPrevious();
     };
 
     const handleNext = () => {
+        context?.handleSetCard({number: cardNumber, expDate: expiryDate})
+
         onNext();
     };
 

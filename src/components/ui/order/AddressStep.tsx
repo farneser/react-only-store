@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "./step.scss"
+import {OrderContext} from "../../providers/OrderProvider";
 
 interface AddressStepProps {
     onNext: () => void;
@@ -8,7 +9,11 @@ interface AddressStepProps {
 const AddressStep: React.FC<AddressStepProps> = ({onNext}) => {
     const [address, setAddress] = useState('');
 
+    const context = useContext(OrderContext)
+
     const handleNext = () => {
+        context?.handleSetAddress(address)
+
         onNext();
     };
 

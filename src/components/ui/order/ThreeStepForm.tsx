@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import AddressStep from './AddressStep';
 import CardDataStep from './CardDataStep';
-import ConfirmStep from './ConfirmStep';
+import ConfirmStep from './Confirm/ConfirmStep';
 import './threeStepForm.scss';
 import {CartContext} from "../../providers/CartProvider";
 
@@ -20,9 +20,8 @@ const ThreeStepForm: React.FC = () => {
 
     const handleSubmit = () => {
         if (context) {
-            context.cart = []
+            context.updateCart([])
         }
-
     };
 
     return (
