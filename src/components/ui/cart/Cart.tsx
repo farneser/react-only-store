@@ -5,6 +5,7 @@ import {CartProduct} from '../../../interfaces/CartProps';
 import {CartContext} from '../../providers/CartProvider';
 import ListContainer from "../ListContainer/ListContainer";
 import EmptyList from "../emptyList/EmptyList";
+import locations from "../../../locations";
 
 const Cart: React.FC = () => {
     const context = useContext(CartContext);
@@ -51,7 +52,8 @@ const Cart: React.FC = () => {
                     decrement={() => decrement(item)}
                     removeFromCart={() => removeFromCart(item.product)}
                 />
-            )) : <EmptyList message={"Cart items not found"} link={{message: "Go to Home page", path: "/"}}/>}
+            )) : <EmptyList message={"Cart items not found"}
+                            link={{message: "Go to Home page", path: locations.rootPath}}/>}
         </ListContainer>
     );
 };

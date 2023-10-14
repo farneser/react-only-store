@@ -8,12 +8,13 @@ import HomePage from "./components/pages/HomePage";
 import CartPage from "./components/pages/CartPage";
 import React from "react";
 import Layout from "./components/ui/layout/Layout";
+import locations from "./locations";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Layout/>}>
+        <Route path={locations.rootPath} element={<Layout/>}>
             <Route index element={<HomePage/>}/>
-            <Route path="/cart" element={<CartPage/>}/>
+            <Route path={locations.cartPath} element={<CartPage/>}/>
         </Route>
     )
 );
