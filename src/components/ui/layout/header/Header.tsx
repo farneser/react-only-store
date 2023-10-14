@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {CartContext} from "../../../providers/CartProvider";
 import HeaderButton from "./button/HeaderButton";
+import locations from "../../../../locations";
 
 const Header: React.FC = () => {
     const context = useContext(CartContext);
@@ -15,8 +16,8 @@ const Header: React.FC = () => {
 
     return (
         <div id="header">
-            <HeaderButton button_text={"Home"} path={"/"}/>
-            <HeaderButton button_text={"Cart"} path={"cart"}/>
+            <HeaderButton button_text={"Home"} path={locations.rootPath}/>
+            <HeaderButton button_text={"Cart"} path={locations.cartPath}/>
             <div>
                 <span>{sum}</span>
             </div>

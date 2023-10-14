@@ -2,10 +2,14 @@ import React, {useState, useEffect, useContext, FC} from 'react';
 import {Product} from '../../../../interfaces/Product';
 import {CartContext} from '../../../providers/CartProvider';
 import './productItem.scss';
+import {useNavigate} from "react-router-dom";
+import locations from "../../../../locations";
 
 const ProductItem: FC<{ product: Product }> = ({product}) => {
     const context = useContext(CartContext);
     const [inCart, setInCart] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (context) {
@@ -21,7 +25,7 @@ const ProductItem: FC<{ product: Product }> = ({product}) => {
             </div>
             <div className={"cart-actions"}>
                 {inCart ? (
-                    <a href={'cart'} className={"go-to-cart-link"}>
+                    <a onClick={() => navigate(locations.cartPath)} className={"go-to-cart-link"}>
                         Go to Cart
                     </a>
                 ) : (
