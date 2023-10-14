@@ -1,13 +1,11 @@
 import React from 'react';
 import Cart from "../ui/cart/Cart";
-import ThreeStepForm from "../ui/order/ThreeStepForm";
 
 const CartPage: React.FC = () => {
     return (
         <div>
-            <p>Cart</p>
+            <h1>Cart</h1>
             <Cart/>
-            <ThreeStepForm/>
         </div>
     );
 };

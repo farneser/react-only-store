@@ -6,6 +6,7 @@ import {CartContext} from '../../providers/CartProvider';
 import ListContainer from "../ListContainer/ListContainer";
 import EmptyList from "../emptyList/EmptyList";
 import locations from "../../../locations";
+import ThreeStepForm from "../order/ThreeStepForm";
 
 const Cart: React.FC = () => {
     const context = useContext(CartContext);
@@ -44,7 +45,7 @@ const Cart: React.FC = () => {
     }, [cartItems]);
 
     return (
-        <ListContainer>
+        <><ListContainer title={"Cart"}>
             {cartItems.length > 0 ? cartItems.map((item) => (
                 <CartItem
                     cartProduct={item}
@@ -55,6 +56,8 @@ const Cart: React.FC = () => {
             )) : <EmptyList message={"Cart items not found"}
                             link={{message: "Go to Home page", path: locations.rootPath}}/>}
         </ListContainer>
+            {cartItems.length > 0 ? <ThreeStepForm/> : <></>}
+        </>
     );
 };
 

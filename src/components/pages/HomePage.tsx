@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
 
     return (
         <div>
-            <p>Products</p>
+            <h1>Products</h1>
             <ProductList products={productList}/>
         </div>
     );

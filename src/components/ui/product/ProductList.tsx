@@ -11,7 +11,7 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({products}) => {
     return (
-        <ListContainer>
+        <ListContainer title={"Product"}>
             {products.length > 0 ? products.map((product) => (
                 <ProductItem product={product}/>
             )) : <EmptyList message={"Products not found"}/>}
