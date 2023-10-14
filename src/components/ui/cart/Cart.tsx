@@ -3,8 +3,8 @@ import CartItem from './item/CartItem';
 import {removeFromCart} from '../../../services/cartService';
 import {CartProduct} from '../../../interfaces/CartProps';
 import {CartContext} from '../../providers/CartProvider';
-
-import './cart.scss';
+import ListContainer from "../ListContainer/ListContainer";
+import EmptyList from "../emptyList/EmptyList";
 
 const Cart: React.FC = () => {
     const context = useContext(CartContext);
@@ -43,19 +43,16 @@ const Cart: React.FC = () => {
     }, [cartItems]);
 
     return (
-        <div className={'cart-container'}>
-            <h2 className={'cart-title'}>Cart</h2>
-            <div className={'cart-item-list'}>
-                {cartItems.map((item) => (
-                    <CartItem
-                        cartProduct={item}
-                        increment={() => increment(item)}
-                        decrement={() => decrement(item)}
-                        removeFromCart={() => removeFromCart(item.product)}
-                    />
-                ))}
-            </div>
-        </div>
+        <ListContainer>
+            {cartItems.length > 0 ? cartItems.map((item) => (
+                <CartItem
+                    cartProduct={item}
+                    increment={() => increment(item)}
+                    decrement={() => decrement(item)}
+                    removeFromCart={() => removeFromCart(item.product)}
+                />
+            )) : <EmptyList message={"Cart items not found"} link={{message: "Go to Home page", path: "/"}}/>}
+        </ListContainer>
     );
 };
 

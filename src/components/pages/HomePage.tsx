@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductList from "../ui/product/ProductList";
 import {Product} from "../../interfaces/Product";
-import {addToCart} from "../../services/cartService";
 
 const HomePage: React.FC = () => {
 
@@ -15,7 +14,7 @@ const HomePage: React.FC = () => {
     return (
         <div>
             <p>Products</p>
-            <ProductList products={productList} addToCart={addToCart}/>
+            <ProductList products={productList}/>
         </div>
     );
 };

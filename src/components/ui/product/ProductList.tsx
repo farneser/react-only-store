@@ -2,23 +2,20 @@ import React from 'react';
 import {Product} from '../../../interfaces/Product';
 import ProductItem from './item/ProductItem';
 
-import './productListStyles.scss';
+import ListContainer from "../ListContainer/ListContainer";
+import EmptyList from "../emptyList/EmptyList";
 
 interface ProductListProps {
     products: Product[];
-    addToCart: (product: Product) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({products, addToCart}) => {
+const ProductList: React.FC<ProductListProps> = ({products}) => {
     return (
-        <div className="product-list">
-            <h2 className="product-list-title">Products</h2>
-            <div className="product-list-item-list">
-                {products.map((product) => (
-                    <ProductItem product={product}/>
-                ))}
-            </div>
-        </div>
+        <ListContainer>
+            {products.length > 0 ? products.map((product) => (
+                <ProductItem product={product}/>
+            )) : <EmptyList message={"Products not found"}/>}
+        </ListContainer>
     );
 };
 
