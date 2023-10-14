@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, FC} from 'react';
+import React, {FC, useContext, useEffect, useState} from 'react';
 import {Product} from '../../../../interfaces/Product';
 import {CartContext} from '../../../providers/CartProvider';
 import './productItem.scss';

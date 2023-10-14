@@ -1,9 +1,7 @@
-
 $buttonColor: #85c3ff;
 $buttonColorHover: #cae5ff;
 $activeColor: $buttonColorHover;
 
-/* Style for the header link */
 .header__link {
   cursor: pointer;
   text-decoration: none;
@@ -18,12 +16,10 @@ $activeColor: $buttonColorHover;
   }
 }
 
-/* Style for an active header link */
 .header__link_active {
   color: $activeColor;
 }
 
-/* Style for the icon (if provided) */
 .header__link img {
   width: 20px;
   height: 20px;
