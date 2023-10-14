@@ -1,6 +1,3 @@
-/* CartItemStyles.module.scss */
-
-/* Style for the cart item container */
 .cart-item {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -8,17 +5,13 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: #fff;
 }
 
-/* Style for the product details */
 .product-details {
   display: flex;
-  align-items: center;
 }
 
-/* Style for the product name and price */
 .product-name {
   font-weight: bold;
   margin-right: 10px;
@@ -28,13 +21,11 @@
   color: #777;
 }
 
-/* Style for the quantity controls */
 .quantity-controls {
   display: flex;
   align-items: center;
 }
 
-/* Style for the buttons */
 .button {
   border: none;
   border-radius: 5px;
