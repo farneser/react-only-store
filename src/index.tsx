@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {CartProvider} from "./components/providers/CartProvider";
 import "./styles.css"
+import {OrderProvider} from "./components/providers/OrderProvider";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <CartProvider>
-            <App/>
+            <OrderProvider>
+                <App/>
+            </OrderProvider>
         </CartProvider>
     </React.StrictMode>
 );
